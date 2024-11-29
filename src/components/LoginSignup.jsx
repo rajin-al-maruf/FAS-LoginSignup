@@ -1,4 +1,11 @@
 import React, { useState } from 'react'
+import { app } from '../firebaseConfig'
+import { 
+    getAuth, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword 
+} from "firebase/auth";
+
 
 const LoginSignup = () => {
 
@@ -16,7 +23,19 @@ const LoginSignup = () => {
             [name] : value
         }))
     }
-console.log(loginData)
+
+    const auth = getAuth()
+
+    function handleSubmit() {
+        createUserWithEmailAndPassword(auth, loginData.email, loginData.password)
+        .then((response) => {
+            console.log(response.user)
+        })
+        .catch((error) => {
+            alert(error.message)
+        })
+    }
+
   return (
     <div>
       <div>
@@ -38,7 +57,10 @@ console.log(loginData)
       </div>
       <button 
         className='m-2 bg-slate-300 p-2 rounded-md'
-        type="submit">Submit</button>
+        type="submit"
+        onClick={handleSubmit}
+        >Submit
+    </button>
     </div>
   )
 }
