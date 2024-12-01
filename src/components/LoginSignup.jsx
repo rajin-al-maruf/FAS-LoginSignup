@@ -37,30 +37,34 @@ const LoginSignup = () => {
     }
 
   return (
-    <div>
-      <div>
+    <div className=''>
+      <div className='flex flex-col max-w-sm m-auto mt-20 p-10 border '>
+        <p className='m-auto text-2xl mb-6 font-medium'>SignUp</p>
         <input 
-            className='bg-slate-200 rounded-md p-2 m-2'
+            className='rounded-md p-2 my-2 border focus:outline-none text-gray-700 text-sm '
             type="email" 
             name="email" 
             onChange={handleChange}
             value={loginData.email}
-
+            placeholder='Email address'
         />
         <input 
-            className='bg-slate-200 rounded-md p-2 m-2'
+            className='rounded-md p-2 my-2 border focus:outline-none text-gray-700 text-sm'
             type="password" 
             name="password" 
             onChange={handleChange}
             value={loginData.password}
+            placeholder='Password'
         />
+        <button 
+            className='mt-4 bg-gray-800 p-2 rounded-md text-white hover:bg-gray-900'
+            type="submit"
+            onClick={handleSubmit}
+            >
+                Signup
+        </button>
       </div>
-      <button 
-        className='m-2 bg-slate-300 p-2 rounded-md'
-        type="submit"
-        onClick={handleSubmit}
-        >Submit
-    </button>
+      
     </div>
   )
 }
